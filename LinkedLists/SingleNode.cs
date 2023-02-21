@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace DataStructures.LinkedLists
 {
-    public class SingleNode<T> : ICloneable, IComparable
+    internal class SingleNode<T> : ICloneable, IComparable where T : IComparable
     {
         public T Element { get; set; }
         public SingleNode<T> Next { get; set; }
@@ -23,7 +19,7 @@ namespace DataStructures.LinkedLists
         }
         public int CompareTo(object? obj)
         {
-            throw new NotImplementedException();
+            return Element.CompareTo(((SingleNode<T>)obj).Element);
         }
     }
 }
