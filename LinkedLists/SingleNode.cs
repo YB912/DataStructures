@@ -2,7 +2,7 @@
 
 namespace DataStructures.LinkedLists
 {
-    internal class SingleNode<T> : ICloneable, IComparable where T : IComparable
+    internal class SingleNode<T> : ISingleNode<T> where T : IComparable
     {
         public T Element { get; set; }
         public SingleNode<T> Next { get; set; }
