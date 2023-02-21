@@ -1,7 +1,5 @@
 ﻿
 
-using System.Runtime.ExceptionServices;
-
 namespace DataStructures.SinglyLinkedList
 {
     internal interface ISinglyLinkedList<T> : IADT, ICloneable, IComparable
