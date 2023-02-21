@@ -3,8 +3,8 @@
     internal class SinglyLinkedList<T> : ISinglyLinkedList<T> where T : class, ICloneable, IComparable
     {
         int _size;
-        SingleNode<T> _head;
-        SingleNode<T> _tail;
+        SingleNode _head;
+        SingleNode _tail;
         public int Size()
         {
             return _size;
@@ -29,6 +29,7 @@
         }
         public T? First()
         {
+
             return _head.Element;
         }
         public T? Last()
@@ -37,14 +38,14 @@
         }
         public virtual void AddFirst(T element)
         {
-            var added = new SingleNode<T>(element, _head);
+            var added = new SingleNode(element, _head);
             _head = added;
             if (IsEmpty()) { _tail = _head; }
             _size++;
         }
         public virtual void AddLast(T element)
         {
-            var added = new SingleNode<T>(element, null);
+            var added = new SingleNode(element, null);
             if (IsEmpty())
             {
                 _tail = _head = added;
@@ -62,6 +63,26 @@
             _head = _head.Next;
             _size--;
             return output;
+        }
+        protected internal class SingleNode : ICloneable, IComparable
+        {
+            public T Element { get; set; }
+            public SingleNode Next { get; set; }
+            public SingleNode(T element, SingleNode next)
+            {
+                Element = element;
+                Next = null;
+            }
+            public object Clone()
+            {
+                SingleNode output = new SingleNode(Element, Next);
+                output.Next = Next;
+                return output;
+            }
+            public int CompareTo(object? obj)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
