@@ -1,6 +1,4 @@
-﻿
-
-namespace DataStructures.SinglyLinkedList
+﻿namespace DataStructures.LinkedLists
 {
     internal class SinglyLinkedList<T> : ISinglyLinkedList<T> where T : class, ICloneable, IComparable
     {
@@ -13,7 +11,7 @@ namespace DataStructures.SinglyLinkedList
         }
         public bool IsEmpty()
         {
-            return (_size== 0);
+            return _size == 0;
         }
         public void Clear()
         {
@@ -31,7 +29,6 @@ namespace DataStructures.SinglyLinkedList
         }
         public T? First()
         {
-
             return _head.Element;
         }
         public T? Last()
@@ -40,7 +37,7 @@ namespace DataStructures.SinglyLinkedList
         }
         public void AddFirst(T element)
         {
-            var added = new Node(element,_head);
+            var added = new Node(element, _head);
             _head = added;
             if (IsEmpty()) { _tail = _head; }
             _size++;
@@ -48,14 +45,14 @@ namespace DataStructures.SinglyLinkedList
         public void AddLast(T element)
         {
             var added = new Node(element, null);
-            if (IsEmpty()) 
+            if (IsEmpty())
             {
                 _tail = _head = added;
                 _size++;
                 return;
             }
             _tail.Next = added;
-            _tail= added;
+            _tail = added;
             _size++;
         }
         public T RemoveFirst()
@@ -72,7 +69,7 @@ namespace DataStructures.SinglyLinkedList
             public Node Next { get; set; }
             public Node(T element, Node next)
             {
-                Element= element;
+                Element = element;
                 Next = null;
             }
             public object Clone()

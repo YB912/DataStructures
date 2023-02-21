@@ -1,6 +1,4 @@
-﻿
-
-namespace DataStructures.SinglyLinkedList
+﻿namespace DataStructures.LinkedLists
 {
     internal interface ISinglyLinkedList<T> : IADT, ICloneable
     {
