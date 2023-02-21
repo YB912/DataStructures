@@ -2,9 +2,9 @@
 {
     internal class SinglyLinkedList<T> : ISinglyLinkedList<T> where T : class, ICloneable, IComparable
     {
-        int _size;
-        SingleNode _head;
-        SingleNode _tail;
+        protected internal int _size;
+        protected internal SingleNode _head;
+        protected internal SingleNode _tail;
         public int Size()
         {
             return _size;

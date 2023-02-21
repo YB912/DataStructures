@@ -6,19 +6,43 @@ namespace DataStructures.LinkedLists
     {
         public override void AddFirst(T element)
         {
-            throw new NotImplementedException();
+            if(IsEmpty())
+            {
+                _tail = new SingleNode(element, null);
+                _tail.Next = _tail;
+            } else
+            {
+                var added = new SingleNode(element, _tail.Next);
+                _tail.Next= added;
+            }
+            UpdateHead();
+            _size++;
         }
         public override void AddLast(T element)
         {
-            throw new NotImplementedException();
+            AddFirst(element);
+            Rotate();
+            UpdateHead();
         }
         public override T RemoveFirst()
         {
-            throw new NotImplementedException();
+            if(IsEmpty() == false)
+            {
+                var output = _tail.Next.Element;
+                _tail.Next = _head.Next;
+                UpdateHead();
+                _size--;
+                return output;
+            }
+            return default(T);
         }
         public void Rotate()
         {
-            throw new NotImplementedException();
+            if(_tail != null) { _tail = _tail.Next; UpdateHead(); }
+        }
+        private void UpdateHead()
+        {
+            _head = _tail.Next;
         }
     }
 }
