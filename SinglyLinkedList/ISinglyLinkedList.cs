@@ -2,7 +2,7 @@
 
 namespace DataStructures.SinglyLinkedList
 {
-    internal interface ISinglyLinkedList<T> : IADT, ICloneable, IComparable
+    internal interface ISinglyLinkedList<T> : IADT, ICloneable
     {
         T First();
         T Last();
