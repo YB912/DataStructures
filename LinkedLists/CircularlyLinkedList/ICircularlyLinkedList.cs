@@ -2,7 +2,8 @@
 
 namespace DataStructures.LinkedLists
 {
-    internal interface ICircularlyLinkedList
+    internal interface ICircularlyLinkedList<T> : ISinglyLinkedList<T>
     {
+        public void Rotate();
     }
 }

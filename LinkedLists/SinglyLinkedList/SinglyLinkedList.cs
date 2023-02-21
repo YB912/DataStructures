@@ -35,14 +35,14 @@
         {
             return _tail.Element;
         }
-        public void AddFirst(T element)
+        public virtual void AddFirst(T element)
         {
             var added = new SingleNode<T>(element, _head);
             _head = added;
             if (IsEmpty()) { _tail = _head; }
             _size++;
         }
-        public void AddLast(T element)
+        public virtual void AddLast(T element)
         {
             var added = new SingleNode<T>(element, null);
             if (IsEmpty())
@@ -55,7 +55,7 @@
             _tail = added;
             _size++;
         }
-        public T RemoveFirst()
+        public virtual T RemoveFirst()
         {
             if (IsEmpty()) { return null; }
             var output = _head.Element;
