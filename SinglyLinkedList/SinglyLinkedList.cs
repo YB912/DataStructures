@@ -48,6 +48,25 @@ namespace DataStructures.SinglyLinkedList
         {
             throw new NotImplementedException();
         }
-
+        private class Node<T> : ICloneable, IComparable
+        {
+            public T Element { get; private set; }
+            public Node<T> Next { get; set; }
+            public Node(T element)
+            {
+                Element= element;
+                Next = null;
+            }
+            public object Clone()
+            {
+                Node<T> output = new Node<T>(Element);
+                output.Next = Next;
+                return output;
+            }
+            public int CompareTo(object? obj)
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }
