@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataStructures.SinglyLinkedList
 {
-    internal class SinglyLinkedList<T> : ISinglyLinkedList<T>
+    internal class SinglyLinkedList<T> : ISinglyLinkedList<T> where T : class, ICloneable, IComparable
     {
+        int _size;
+        Node _head;
+        Node _tail;
         public int Size()
         {
-            throw new NotImplementedException();
+            return _size;
         }
         public bool IsEmpty()
         {
-            throw new NotImplementedException();
+            return (_size== 0);
         }
         public void Clear()
         {
-            throw new NotImplementedException();
+            _head = null;
+            _tail = null;
+            _size = 0;
         }
         public object Clone()
         {
@@ -28,38 +34,55 @@ namespace DataStructures.SinglyLinkedList
         {
             throw new NotImplementedException();
         }
-        public T First()
+        public T? First()
         {
-            throw new NotImplementedException();
+
+            return _head.Element;
         }
-        public T Last()
+        public T? Last()
         {
-            throw new NotImplementedException();
+            return _tail.Element;
         }
         public void AddFirst(T element)
         {
-            throw new NotImplementedException();
+            var added = new Node(element,_head);
+            _head = added;
+            if (IsEmpty()) { _tail = _head; }
+            _size++;
         }
         public void AddLast(T element)
         {
-            throw new NotImplementedException();
+            var added = new Node(element, null);
+            if (IsEmpty()) 
+            {
+                _tail = _head = added;
+                _size++;
+                return;
+            }
+            _tail.Next = added;
+            _tail= added;
+            _size++;
         }
         public T RemoveFirst()
         {
-            throw new NotImplementedException();
+            if (IsEmpty()) { return null; }
+            var output = _head.Element;
+            _head = _head.Next;
+            _size--;
+            return output;
         }
-        private class Node<T> : ICloneable, IComparable
+        class Node : ICloneable, IComparable
         {
-            public T Element { get; private set; }
-            public Node<T> Next { get; set; }
-            public Node(T element)
+            public T Element { get; set; }
+            public Node Next { get; set; }
+            public Node(T element, Node next)
             {
                 Element= element;
                 Next = null;
             }
             public object Clone()
             {
-                Node<T> output = new Node<T>(Element);
+                Node output = new Node(Element, Next);
                 output.Next = Next;
                 return output;
             }
