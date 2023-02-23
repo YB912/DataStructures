@@ -81,10 +81,11 @@ namespace DataStructures.LinkedLists
             {
                 return new DoubleNode(Element, Next, Prev);
             }
-
             public int CompareTo(object? obj)
             {
-                throw new NotImplementedException();
+                if ((obj is DoubleNode) == false) return -1;
+                DoubleNode other = obj as DoubleNode;
+                return Element.CompareTo(other.Element);
             }
         }
     }

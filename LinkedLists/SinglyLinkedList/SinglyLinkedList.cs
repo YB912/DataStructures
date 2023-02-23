@@ -71,7 +71,9 @@
             }
             public int CompareTo(object? obj)
             {
-                throw new NotImplementedException();
+                if ((obj is SingleNode) == false) return -1;
+                SingleNode other = obj as SingleNode;
+                return Element.CompareTo(other.Element);
             }
         }
     }
