@@ -12,7 +12,9 @@ namespace DataStructures.LinkedLists
         public DoublyLinkedList() 
         {
             _size = 0;
-            _headerSentinel = _tailersentinel = _head = _tail = null;
+            _head = _tail = null;
+            _headerSentinel.Next = _tailersentinel;
+            _tailersentinel.Prev = _headerSentinel;
         }
         public int Size() { return _size; }
         public bool IsEmpty() { return _size == 0; }
@@ -25,24 +27,39 @@ namespace DataStructures.LinkedLists
         {
             throw new NotImplementedException();
         }
-        public T First()
-        { return _head.Element; }
+        public T First() { return _head.Element; }
         public T Last() { return _tail.Element; }
         public void AddFirst(T element)
         {
-            throw new NotImplementedException();
+            DoubleNode added = new DoubleNode(element, _headerSentinel.Next, _headerSentinel);
+            _headerSentinel.Next.Prev = added;
+            _headerSentinel.Next = added;
+            _size++;
         }
         public void AddLast(T element)
         {
-            throw new NotImplementedException();
+            DoubleNode added = new DoubleNode(element, _tailersentinel, _tailersentinel.Prev);
+            _tailersentinel.Prev.Next = added;
+            _tailersentinel.Prev = added;
+            _size++;
         }
         public T RemoveFirst()
         {
-            throw new NotImplementedException();
+            T output = _head.Element;
+            _headerSentinel.Next = _head.Next;
+            _head.Next.Prev = _headerSentinel;
+            _head = _headerSentinel.Next;
+            _size--;
+            return output;
         }
         public T RemoveLast()
         {
-            throw new NotImplementedException();
+            T output = _tail.Element;
+            _tailersentinel.Prev = _tail.Prev;
+            _tail.Prev.Next = _tailersentinel;
+            _tail = _tailersentinel.Prev;
+            _size--;
+            return output;
         }
         protected internal class DoubleNode : ICloneable, IComparable
         {
