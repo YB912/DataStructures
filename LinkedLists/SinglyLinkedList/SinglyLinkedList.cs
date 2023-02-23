@@ -5,6 +5,12 @@
         protected internal int _size;
         protected internal SingleNode _head;
         protected internal SingleNode _tail;
+        public SinglyLinkedList() 
+        {
+            _size = 0;
+            _head = null;
+            _tail = null;
+        }
         public int Size()
         {
             return _size;
