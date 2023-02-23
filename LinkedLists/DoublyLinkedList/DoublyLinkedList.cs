@@ -14,30 +14,20 @@ namespace DataStructures.LinkedLists
             _size = 0;
             _headerSentinel = _tailersentinel = _head = _tail = null;
         }
-        public int Size()
-        {
-            return _size;
-        }
-        public bool IsEmpty()
-        {
-            throw new NotImplementedException();
-        }
+        public int Size() { return _size; }
+        public bool IsEmpty() { return _size == 0; }
         public void Clear()
         {
-            throw new NotImplementedException();
+            _size = 0;
+            _head = _tail = null;
         }
         public object Clone()
         {
             throw new NotImplementedException();
         }
         public T First()
-        {
-            throw new NotImplementedException();
-        }
-        public T Last()
-        {
-            throw new NotImplementedException();
-        }
+        { return _head.Element; }
+        public T Last() { return _tail.Element; }
         public void AddFirst(T element)
         {
             throw new NotImplementedException();
