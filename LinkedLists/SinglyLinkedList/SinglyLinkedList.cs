@@ -23,10 +23,6 @@
         {
             throw new NotImplementedException();
         }
-        public int CompareTo(object? obj)
-        {
-            throw new NotImplementedException();
-        }
         public T? First()
         {
 
