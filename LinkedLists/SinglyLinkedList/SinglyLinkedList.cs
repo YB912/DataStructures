@@ -8,8 +8,7 @@
         public SinglyLinkedList() 
         {
             _size = 0;
-            _head = null;
-            _tail = null;
+            _head = _tail = null;
         }
         public int Size()
         {
