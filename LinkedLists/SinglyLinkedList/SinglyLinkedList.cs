@@ -25,7 +25,6 @@
         }
         public T? First()
         {
-
             return _head.Element;
         }
         public T? Last()
@@ -64,16 +63,19 @@
         {
             public T Element { get; set; }
             public SingleNode Next { get; set; }
-            public SingleNode(T element, SingleNode next)
+            public SingleNode(T element) 
             {
                 Element = element;
                 Next = null;
             }
+            public SingleNode(T element, SingleNode next)
+            {
+                Element = element;
+                Next = next;
+            }
             public object Clone()
             {
-                SingleNode output = new SingleNode(Element, Next);
-                output.Next = Next;
-                return output;
+                return new SingleNode(Element, Next);
             }
             public int CompareTo(object? obj)
             {
