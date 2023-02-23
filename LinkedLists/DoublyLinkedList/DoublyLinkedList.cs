@@ -4,11 +4,11 @@ namespace DataStructures.LinkedLists
 {
     internal class DoublyLinkedList<T> : IDoublyLinkedList<T> where T : class, ICloneable, IComparable
     {
-        int _size;
-        DoubleNode _headerSentinel;
-        DoubleNode _tailersentinel;
-        DoubleNode _head;
-        DoubleNode _tail;
+        protected internal int _size;
+        protected internal DoubleNode _headerSentinel;
+        protected internal DoubleNode _tailersentinel;
+        protected internal DoubleNode _head;
+        protected internal DoubleNode _tail;
         public DoublyLinkedList() 
         {
             _size = 0;
