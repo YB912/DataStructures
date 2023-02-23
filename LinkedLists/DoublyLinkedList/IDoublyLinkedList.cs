@@ -2,7 +2,8 @@
 
 namespace DataStructures.LinkedLists
 {
-    internal interface IDoublyLinkedList<T> : IADT, ICloneable
+    internal interface IDoublyLinkedList<T> : ISinglyLinkedList<T>
     {
+        public T RemoveLast();
     }
 }
