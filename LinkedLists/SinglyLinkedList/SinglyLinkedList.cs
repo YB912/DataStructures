@@ -51,6 +51,22 @@
             _size--;
             return output;
         }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if ((obj is SinglyLinkedList<T>) == false) return false;
+            SinglyLinkedList<T> other = obj as SinglyLinkedList<T>;
+            if (_size != other._size) return false;
+            var traverseThis = _head;
+            var traverseOther = other._head;
+            while (traverseThis != null)
+            {
+                if (traverseThis.Element.Equals(traverseOther.Element) == false) return false;
+                traverseThis = traverseThis.Next;
+                traverseOther = traverseOther.Next;
+            }
+            return true;
+        }
         protected internal class SingleNode : ICloneable, IComparable
         {
             public T Element { get; set; }
