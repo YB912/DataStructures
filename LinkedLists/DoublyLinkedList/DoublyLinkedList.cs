@@ -1,5 +1,7 @@
 ﻿
 
+using System.Threading;
+
 namespace DataStructures.LinkedLists
 {
     internal class DoublyLinkedList<T> : IDoublyLinkedList<T> where T : class, ICloneable, IComparable
@@ -30,6 +32,22 @@ namespace DataStructures.LinkedLists
         public void AddLast(T element) { AddBetween(element, _tailersentinel.Prev, _tailersentinel); }
         public T RemoveFirst() { return Remove(_headerSentinel.Next); }
         public T RemoveLast() { return Remove(_tailersentinel.Prev); }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if ((obj is DoublyLinkedList<T>) == false) return false;
+            DoublyLinkedList<T> other = obj as DoublyLinkedList<T>;
+            if (_size != other._size) return false;
+            var traverseThis = _headerSentinel.Next;
+            var traverseOther = other._headerSentinel.Next;
+            while (traverseThis != null)
+            {
+                if (traverseThis.Element.Equals(traverseOther.Element) == false) return false;
+                traverseThis = traverseThis.Next;
+                traverseOther = traverseOther.Next;
+            }
+            return true;
+        }
         private void AddBetween(T element, DoubleNode prev, DoubleNode next) 
         {
             DoubleNode added = new DoubleNode(element, prev, next);
