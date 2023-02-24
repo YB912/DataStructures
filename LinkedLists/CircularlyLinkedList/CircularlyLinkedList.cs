@@ -40,6 +40,22 @@ namespace DataStructures.LinkedLists
         {
             if(_tail != null) { _tail = _tail.Next; UpdateHead(); }
         }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null) return false;
+            if ((obj is CircularlyLinkedList<T>) == false) return false;
+            CircularlyLinkedList<T> other = obj as CircularlyLinkedList<T>;
+            if (_size != other._size) return false;
+            var traverseThis = _head;
+            var traverseOther = other._head;
+            for (int i = 0; i < _size; i++)
+            {
+                if (traverseThis.Element.Equals(traverseOther.Element) == false) return false;
+                traverseThis = traverseThis.Next;
+                traverseOther = traverseOther.Next;
+            }
+            return true;
+        }
         private void UpdateHead()
         {
             _head = _tail.Next;
