@@ -55,7 +55,7 @@
         {
             if (obj == null) return false;
             if ((obj is SinglyLinkedList<T>) == false) return false;
-            SinglyLinkedList<T> other = obj as SinglyLinkedList<T>;
+            var other = obj as SinglyLinkedList<T>;
             if (_size != other._size) return false;
             var traverseThis = _head;
             var traverseOther = other._head;
@@ -88,7 +88,7 @@
             public int CompareTo(object? obj)
             {
                 if ((obj is SingleNode) == false) return -1;
-                SingleNode other = obj as SingleNode;
+                var other = obj as SingleNode;
                 return Element.CompareTo(other.Element);
             }
         }

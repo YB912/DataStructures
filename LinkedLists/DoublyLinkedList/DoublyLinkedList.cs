@@ -1,8 +1,4 @@
-﻿
-
-using System.Threading;
-
-namespace DataStructures.LinkedLists
+﻿namespace DataStructures.LinkedLists
 {
     internal class DoublyLinkedList<T> : IDoublyLinkedList<T> where T : class, ICloneable, IComparable
     {
@@ -36,7 +32,7 @@ namespace DataStructures.LinkedLists
         {
             if (obj == null) return false;
             if ((obj is DoublyLinkedList<T>) == false) return false;
-            DoublyLinkedList<T> other = obj as DoublyLinkedList<T>;
+            var other = obj as DoublyLinkedList<T>;
             if (_size != other._size) return false;
             var traverseThis = _headerSentinel.Next;
             var traverseOther = other._headerSentinel.Next;
@@ -50,7 +46,7 @@ namespace DataStructures.LinkedLists
         }
         private void AddBetween(T element, DoubleNode prev, DoubleNode next) 
         {
-            DoubleNode added = new DoubleNode(element, prev, next);
+            var added = new DoubleNode(element, prev, next);
             prev.Next = added;
             next.Prev = added;
             _size++;
@@ -86,7 +82,7 @@ namespace DataStructures.LinkedLists
             public int CompareTo(object? obj)
             {
                 if ((obj is DoubleNode) == false) return -1;
-                DoubleNode other = obj as DoubleNode;
+                var other = obj as DoubleNode;
                 return Element.CompareTo(other.Element);
             }
         }

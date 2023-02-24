@@ -1,6 +1,4 @@
-﻿
-
-namespace DataStructures.LinkedLists
+﻿namespace DataStructures.LinkedLists
 {
     internal class CircularlyLinkedList<T> : SinglyLinkedList<T>, ICircularlyLinkedList<T> where T : class, ICloneable, IComparable
     {
@@ -44,7 +42,7 @@ namespace DataStructures.LinkedLists
         {
             if (obj == null) return false;
             if ((obj is CircularlyLinkedList<T>) == false) return false;
-            CircularlyLinkedList<T> other = obj as CircularlyLinkedList<T>;
+            var other = obj as CircularlyLinkedList<T>;
             if (_size != other._size) return false;
             var traverseThis = _head;
             var traverseOther = other._head;
