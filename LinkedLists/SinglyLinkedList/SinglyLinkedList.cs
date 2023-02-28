@@ -17,7 +17,7 @@
             _size = 0;
             _head = _tail = null;
         }
-        public Object Clone()
+        public virtual Object Clone()
         {
             var output = new SinglyLinkedList<T>();
             if (_size > 0)

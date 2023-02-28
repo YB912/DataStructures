@@ -38,6 +38,24 @@
         {
             if(_tail != null) { _tail = _tail.Next; UpdateHead(); }
         }
+        public override object Clone()
+        {
+            var output = new CircularlyLinkedList<T>();
+            if (_size > 0)
+            {
+                output._head = new SingleNode(_head.Element, null);
+                var iteratorOfThis = _head.Next;
+                var iteratorOfOther = output._head;
+                for (int i = 1; i < _size; i++)
+                {
+                    var newNode = new SingleNode(iteratorOfThis.Element, null);
+                    iteratorOfOther.Next = newNode;
+                    iteratorOfOther = newNode;
+                    iteratorOfThis = iteratorOfThis.Next;
+                }
+            }
+            return output;
+        }
         public override bool Equals(object? obj)
         {
             if (obj == null) return false;
