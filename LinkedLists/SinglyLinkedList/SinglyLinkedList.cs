@@ -1,8 +1,7 @@
 ﻿namespace DataStructures.LinkedLists
 {
-    internal class SinglyLinkedList<T> : ISinglyLinkedList<T> where T : class, ICloneable, IComparable
+    internal class SinglyLinkedList<T> : CDT, ISinglyLinkedList<T> where T : class, ICloneable, IComparable
     {
-        protected internal int _size;
         protected internal SingleNode _head;
         protected internal SingleNode _tail;
         public SinglyLinkedList() 
@@ -10,11 +9,9 @@
             _size = 0;
             _head = _tail = null;
         }
-        public int Size() { return _size; }
-        public bool IsEmpty() { return _size == 0; }
         public void Clear()
         {
-            _size = 0;
+            base.Clear();
             _head = _tail = null;
         }
         public virtual Object Clone()

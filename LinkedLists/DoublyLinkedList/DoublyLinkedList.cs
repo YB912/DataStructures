@@ -1,8 +1,7 @@
 ﻿namespace DataStructures.LinkedLists
 {
-    internal class DoublyLinkedList<T> : IDoublyLinkedList<T> where T : class, ICloneable, IComparable
+    internal class DoublyLinkedList<T> : CDT, IDoublyLinkedList<T> where T : class, ICloneable, IComparable
     {
-        protected internal int _size;
         protected internal DoubleNode _headerSentinel;
         protected internal DoubleNode _tailersentinel;
         public DoublyLinkedList() 
@@ -11,11 +10,9 @@
             _headerSentinel = new DoubleNode(null, null, null);
             _tailersentinel = new DoubleNode(null, null, _headerSentinel);
         }
-        public int Size() { return _size; }
-        public bool IsEmpty() { return _size == 0; }
         public void Clear()
         {
-            _size = 0;
+            base.Clear();
             _headerSentinel.Next = _tailersentinel.Prev = null;
         }
         public object Clone()
