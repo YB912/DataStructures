@@ -78,6 +78,22 @@
             }
             return true;
         }
+        public override string ToString()
+        {
+            string output = "{ ";
+            SingleNode current = _head;
+            for (int i = 0; i < _size; i++)
+            {
+                output += current.Element.ToString();
+                if (i != _size - 1)
+                {
+                    output += ", ";
+                }
+                current = current.Next;
+            }
+            output += " }";
+            return output;
+        }
         protected internal class SingleNode : ICloneable, IComparable
         {
             public T Element { get; set; }
