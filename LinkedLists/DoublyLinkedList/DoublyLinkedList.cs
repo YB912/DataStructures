@@ -20,7 +20,18 @@
         }
         public object Clone()
         {
-            throw new NotImplementedException();
+            var output = new DoublyLinkedList<T>();
+            if (_size > 0)
+            {
+                output.AddFirst(_headerSentinel.Next.Element.Clone() as T);
+                var iterator = _headerSentinel.Next.Next;
+                while (iterator != null)
+                {
+                    output.AddLast(iterator.Element.Clone() as T);
+                    iterator = iterator.Next;
+                }
+            }
+            return output;
         }
         public T First() { return _headerSentinel.Next.Element; }
         public T Last() { return _tailersentinel.Prev.Element; }
