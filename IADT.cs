@@ -2,7 +2,7 @@
 
 namespace DataStructures
 {
-    internal interface IADT
+    public interface IADT
     {
         int Size();
         bool IsEmpty();
