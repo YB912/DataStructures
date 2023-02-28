@@ -17,9 +17,23 @@
             _size = 0;
             _head = _tail = null;
         }
-        public object Clone()
+        public Object Clone()
         {
-            throw new NotImplementedException();
+            var output = new SinglyLinkedList<T>();
+            if (_size > 0)
+            {
+                output._head = new SingleNode(_head.Element, null);
+                var iteratorOfThis = _head.Next;
+                var iteratorOfOther = output._head;
+                while (iteratorOfThis != null)
+                {
+                    var newNode = new SingleNode(iteratorOfThis.Element, null);
+                    iteratorOfOther.Next = newNode;
+                    iteratorOfOther = newNode;
+                    iteratorOfThis = iteratorOfThis.Next;
+                }
+            }
+            return output;
         }
         public T? First() { return _head.Element; }
         public T? Last() { return _tail.Element; }
