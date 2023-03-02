@@ -9,29 +9,6 @@
             _size = 0;
             _head = _tail = null;
         }
-        public void Clear()
-        {
-            base.Clear();
-            _head = _tail = null;
-        }
-        public virtual Object Clone()
-        {
-            var output = new SinglyLinkedList<T>();
-            if (_size > 0)
-            {
-                output._head = new SingleNode(_head.Element, null);
-                var iteratorOfThis = _head.Next;
-                var iteratorOfOther = output._head;
-                while (iteratorOfThis != null)
-                {
-                    var newNode = new SingleNode(iteratorOfThis.Element, null);
-                    iteratorOfOther.Next = newNode;
-                    iteratorOfOther = newNode;
-                    iteratorOfThis = iteratorOfThis.Next;
-                }
-            }
-            return output;
-        }
         public T? First() { return _head.Element; }
         public T? Last() { return _tail.Element; }
         public virtual void AddFirst(T element)
@@ -60,6 +37,25 @@
             var output = _head.Element;
             _head = _head.Next;
             _size--;
+            return output;
+        }
+        public void Clear()
+        {
+            base.Clear();
+            _head = _tail = null;
+        }
+        public virtual object Clone()
+        {
+            var output = new SinglyLinkedList<T>();
+            if (IsEmpty() == false)
+            {
+                var current = _head;
+                while (current != null)
+                {
+                    output.AddLast(current.Element.Clone() as T);
+                    current = current.Next;
+                }
+            }
             return output;
         }
         public override bool Equals(object? obj)
