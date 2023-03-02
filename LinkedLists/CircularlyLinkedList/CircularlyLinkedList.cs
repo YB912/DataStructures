@@ -41,17 +41,13 @@
         public override object Clone()
         {
             var output = new CircularlyLinkedList<T>();
-            if (_size > 0)
+            if (IsEmpty() == false)
             {
-                output._head = new SingleNode(_head.Element, null);
-                var iteratorOfThis = _head.Next;
-                var iteratorOfOther = output._head;
-                for (int i = 1; i < _size; i++)
+                var current = _head;
+                for (int i = 0; i < _size; i++)
                 {
-                    var newNode = new SingleNode(iteratorOfThis.Element, null);
-                    iteratorOfOther.Next = newNode;
-                    iteratorOfOther = newNode;
-                    iteratorOfThis = iteratorOfThis.Next;
+                    output.AddLast(current.Element);
+                    current = current.Next;
                 }
             }
             return output;
