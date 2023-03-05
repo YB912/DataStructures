@@ -81,10 +81,7 @@
             for (int i = 0; i < _size; i++)
             {
                 output += current.Element.ToString();
-                if (i != _size - 1)
-                {
-                    output += ", ";
-                }
+                if (i != _size - 1) { output += ", "; }
                 current = current.Next;
             }
             output += " }";
