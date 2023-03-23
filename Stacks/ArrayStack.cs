@@ -26,7 +26,7 @@ namespace DataStructures.Stacks
                 _size++;
                 return;
             }
-            throw new StackOverflowException();
+            throw new InternalBufferOverflowException();
         }
         public T Pop()
         {
